@@ -1,0 +1,17 @@
+[
+  {
+    "Numero": 15,
+    "Nome": "Canditato(a) A",
+    "CaminhoFoto": "Images/a.jpg"
+  },
+  {
+    "Numero": 22,
+    "Nome": "Canditato(a) B",
+    "CaminhoFoto": "Images/b.jpg"
+  },
+  {
+    "Numero": 37,
+    "Nome": "Canditato(a) C",
+    "CaminhoFoto": "Images/c.jpg"
+  }
+]
