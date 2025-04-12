@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
+            picFotoCandidato = new PictureBox();
             btnNumero1 = new Button();
             btnNumero2 = new Button();
             btnNumero3 = new Button();
@@ -46,17 +46,17 @@
             label2 = new Label();
             groupBox1 = new GroupBox();
             lblNumero = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picFotoCandidato).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
-            // pictureBox1
+            // picFotoCandidato
             // 
-            pictureBox1.Location = new Point(53, 94);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(289, 233);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            picFotoCandidato.Location = new Point(53, 94);
+            picFotoCandidato.Name = "picFotoCandidato";
+            picFotoCandidato.Size = new Size(289, 233);
+            picFotoCandidato.TabIndex = 0;
+            picFotoCandidato.TabStop = false;
             // 
             // btnNumero1
             // 
@@ -67,7 +67,7 @@
             btnNumero1.TabIndex = 1;
             btnNumero1.Text = "1";
             btnNumero1.UseVisualStyleBackColor = true;
-            btnNumero1.Click += btnNumero1_Click;
+            btnNumero1.Click += btnDigito_Click;
             // 
             // btnNumero2
             // 
@@ -78,7 +78,7 @@
             btnNumero2.TabIndex = 2;
             btnNumero2.Text = "2";
             btnNumero2.UseVisualStyleBackColor = true;
-            btnNumero2.Click += btnNumero2_Click;
+            btnNumero2.Click += btnDigito_Click;
             // 
             // btnNumero3
             // 
@@ -89,7 +89,7 @@
             btnNumero3.TabIndex = 3;
             btnNumero3.Text = "3";
             btnNumero3.UseVisualStyleBackColor = true;
-            btnNumero3.Click += btnNumero3_Click;
+            btnNumero3.Click += btnDigito_Click;
             // 
             // btnNumero6
             // 
@@ -100,7 +100,7 @@
             btnNumero6.TabIndex = 6;
             btnNumero6.Text = "6";
             btnNumero6.UseVisualStyleBackColor = true;
-            btnNumero6.Click += btnNumero6_Click;
+            btnNumero6.Click += btnDigito_Click;
             // 
             // btnNumero5
             // 
@@ -111,7 +111,7 @@
             btnNumero5.TabIndex = 5;
             btnNumero5.Text = "5";
             btnNumero5.UseVisualStyleBackColor = true;
-            btnNumero5.Click += btnNumero5_Click;
+            btnNumero5.Click += btnDigito_Click;
             // 
             // btnNumero4
             // 
@@ -122,7 +122,7 @@
             btnNumero4.TabIndex = 4;
             btnNumero4.Text = "4";
             btnNumero4.UseVisualStyleBackColor = true;
-            btnNumero4.Click += btnNumero4_Click;
+            btnNumero4.Click += btnDigito_Click;
             // 
             // btnNumero9
             // 
@@ -133,7 +133,7 @@
             btnNumero9.TabIndex = 9;
             btnNumero9.Text = "9";
             btnNumero9.UseVisualStyleBackColor = true;
-            btnNumero9.Click += btnNumero9_Click;
+            btnNumero9.Click += btnDigito_Click;
             // 
             // btnNumero8
             // 
@@ -144,7 +144,7 @@
             btnNumero8.TabIndex = 8;
             btnNumero8.Text = "8";
             btnNumero8.UseVisualStyleBackColor = true;
-            btnNumero8.Click += btnNumero8_Click;
+            btnNumero8.Click += btnDigito_Click;
             // 
             // btnNumero7
             // 
@@ -155,7 +155,7 @@
             btnNumero7.TabIndex = 7;
             btnNumero7.Text = "7";
             btnNumero7.UseVisualStyleBackColor = true;
-            btnNumero7.Click += btnNumero7_Click;
+            btnNumero7.Click += btnDigito_Click;
             // 
             // btnNumero0
             // 
@@ -166,13 +166,13 @@
             btnNumero0.TabIndex = 10;
             btnNumero0.Text = "0";
             btnNumero0.UseVisualStyleBackColor = true;
-            btnNumero0.Click += btnNumero0_Click;
+            btnNumero0.Click += btnDigito_Click;
             // 
             // btnConfirma
             // 
             btnConfirma.BackColor = Color.FromArgb(0, 192, 0);
             btnConfirma.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            btnConfirma.Location = new Point(657, 344);
+            btnConfirma.Location = new Point(657, 335);
             btnConfirma.Name = "btnConfirma";
             btnConfirma.Size = new Size(129, 72);
             btnConfirma.TabIndex = 11;
@@ -206,13 +206,14 @@
             // 
             // lblNomeCandidato
             // 
+            lblNomeCandidato.Anchor = AnchorStyles.Bottom;
             lblNomeCandidato.AutoSize = true;
             lblNomeCandidato.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblNomeCandidato.Location = new Point(192, 352);
+            lblNomeCandidato.Location = new Point(53, 352);
             lblNomeCandidato.Name = "lblNomeCandidato";
             lblNomeCandidato.Size = new Size(0, 30);
             lblNomeCandidato.TabIndex = 14;
-            lblNomeCandidato.TextAlign = ContentAlignment.MiddleCenter;
+            lblNomeCandidato.TextAlign = ContentAlignment.TopCenter;
             // 
             // label2
             // 
@@ -228,7 +229,7 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(lblNumero);
-            groupBox1.Controls.Add(pictureBox1);
+            groupBox1.Controls.Add(picFotoCandidato);
             groupBox1.Controls.Add(lblNomeCandidato);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
@@ -240,7 +241,7 @@
             // 
             lblNumero.AutoSize = true;
             lblNumero.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblNumero.Location = new Point(169, 32);
+            lblNumero.Location = new Point(53, 34);
             lblNumero.Name = "lblNumero";
             lblNumero.Size = new Size(0, 30);
             lblNumero.TabIndex = 16;
@@ -268,7 +269,7 @@
             Controls.Add(btnNumero1);
             Name = "FormUrna";
             Text = "Urna Eletrônica";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picFotoCandidato).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -277,7 +278,7 @@
 
         #endregion
 
-        private PictureBox pictureBox1;
+        private PictureBox picFotoCandidato;
         private Button btnNumero1;
         private Button btnNumero2;
         private Button btnNumero3;

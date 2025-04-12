@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -15,7 +16,8 @@ namespace VotoWinForms.Repository
 
         public CandidatoRepository()
         {
-            var json = File.ReadAllText("Data/candidatos.json");
+            string caminho = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Data\\candidatos.json");
+            var json = File.ReadAllText(caminho);
             _candidatos = JsonSerializer.Deserialize<List<Candidato>>(json) ?? new List<Candidato>();
         }
 

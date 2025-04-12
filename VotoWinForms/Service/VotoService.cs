@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using VotoWinForms.Contract.Repository;
@@ -23,16 +24,44 @@ namespace VotoWinForms.Service
             _codigoUrna = "URNA-001";
         }
 
-        public Candidato? GetByNumber(int numero)
+        public Candidato GetBranco()
         {
-            return _candidatoRepository.GetByNumber(numero);
+            return new Candidato()
+            {
+                Numero = -2,
+                Nome = "Voto em Branco",
+                CaminhoFoto = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "data\\images\\votoembranco.jpg")
+            };
         }
 
-        public Voto Register(int numero)
+        public Candidato GetNulo()
+        {
+            Candidato candidato = new Candidato()
+            {
+                Numero = -1,
+                Nome = "Voto Nulo",
+                CaminhoFoto = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "data\\images\\votonulo.jpg")
+            };
+
+            return candidato;
+        }
+
+        public Candidato? GetByNumber(int numero)
+        {
+            Candidato? candidato = _candidatoRepository.GetByNumber(numero);
+
+            if (candidato != null)
+                candidato.CaminhoFoto = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), candidato.CaminhoFoto);
+
+            return candidato;
+        }
+
+        public Voto Register(TipoVoto tipoVoto, int numero)
         {
             var voto = new Voto
             {
                 Numero = numero,
+                Tipo = tipoVoto,
                 CodigoUrna = _codigoUrna,
                 HashAnterior = _votoRepository.GetLastHash()
             };

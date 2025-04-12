@@ -10,6 +10,8 @@ namespace VotoWinForms.Contract.Service
     public interface IVotoService
     {
         Candidato? GetByNumber(int numero);
-        Voto Register(int numeroCandidato);
+        Candidato GetBranco();
+        Candidato GetNulo();
+        Voto Register(TipoVoto tipo, int numeroCandidato);
     }
 }

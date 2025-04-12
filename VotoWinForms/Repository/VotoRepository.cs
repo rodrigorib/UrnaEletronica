@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using VotoWinForms.Contract.Repository;
@@ -10,14 +11,16 @@ namespace VotoWinForms.Repository
 {
     public class VotoRepository: IVotoRepository
     {
-        private const string CaminhoArquivo = "Data/votos.txt";
+        private const string CaminhoArquivo = "Data\\votos.txt";
 
         public string GetLastHash()
         {
-            if (!File.Exists(CaminhoArquivo))
+            string caminhoArquivo = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), CaminhoArquivo);
+
+            if (!File.Exists(caminhoArquivo))
                 return "0000000000000000";
 
-            var ultimaLinha = File.ReadLines(CaminhoArquivo).LastOrDefault();
+            var ultimaLinha = File.ReadLines(caminhoArquivo).LastOrDefault();
             if (ultimaLinha == null)
                 return "0000000000000000";
 
@@ -28,8 +31,10 @@ namespace VotoWinForms.Repository
 
         public void Register(Voto voto)
         {
-            var linha = $"Id: {voto.Id} | Nº: {voto.Numero} | Data: {voto.DataHora:yyyy-MM-dd HH:mm:ss} | Urna: {voto.CodigoUrna} | HashAnterior: {voto.HashAnterior} | HashAtual: {voto.HashAtual}";
-            File.AppendAllText(CaminhoArquivo, linha + Environment.NewLine);
+            string caminho = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), CaminhoArquivo);
+
+            var linha = $"Id: {voto.Id} | Nº: {voto.Numero} | TipoVoto: {voto.Tipo} | Data: {voto.DataHora:yyyy-MM-dd HH:mm:ss} | Urna: {voto.CodigoUrna} | HashAnterior: {voto.HashAnterior} | HashAtual: {voto.HashAtual}";
+            File.AppendAllText(caminho, linha + Environment.NewLine);
         }
     }
 }

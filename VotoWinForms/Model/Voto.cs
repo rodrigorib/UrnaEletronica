@@ -12,6 +12,7 @@ namespace VotoWinForms.Model
         public int Numero { get; set; }
         public DateTime DataHora { get; set; } = DateTime.Now;
         public string CodigoUrna { get; set; }
+        public TipoVoto Tipo { get; set; } = TipoVoto.Valido;
         public string HashAnterior { get; set; }
         public string HashAtual { get; set; }
 
@@ -19,5 +20,12 @@ namespace VotoWinForms.Model
         {
             return $"{Id}-{Numero}-{DataHora:yyyy-MM-dd HH:mm:ss}-{CodigoUrna}-{HashAnterior}";
         }
+    }
+
+    public enum TipoVoto
+    {
+        Valido,
+        Branco,
+        Nulo
     }
 }
